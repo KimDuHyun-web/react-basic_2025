@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 function MyHeader({title, desc, onChangeMode}){
-  console.log('MyHeader render');
+  // console.log('MyHeader render');
   return(
     <header>
       <h1 className="logo">

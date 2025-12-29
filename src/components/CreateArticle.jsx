@@ -1,5 +1,5 @@
 function CreateArticle({onsubmit}){
-  console.log('CreateArticle render');
+  // console.log('CreateArticle render');
   return(
     <section>
       <article>
@@ -15,6 +15,10 @@ function CreateArticle({onsubmit}){
           <p>
             <label htmlFor="desc">Description:</label>
             <textarea id="desc" name="desc" placeholder="description"></textarea>
+          </p>
+          <p>
+            <label htmlFor="dif">difficulty:</label>
+            <input type="number" name="dif" placeholder="difficulty" id="dif" min={0} max={10} pattern="^(?=.*\d)[\d]+$"/>
           </p>
           <button className="primary">Submit</button>
         </form>

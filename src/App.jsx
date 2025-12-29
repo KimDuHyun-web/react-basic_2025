@@ -8,7 +8,7 @@ import { useCallback, useState } from 'react'
 import UpdateArticle from './components/UpdateArticle'
 
 function App() {
-  console.log('App render');
+  // console.log('App render');
   /*
   const data = useState(0);
   console.log(data);
@@ -28,13 +28,14 @@ function App() {
     desc:'기본언어인 html, css, javascript부터 학습합니다.'
   });
   const [menus, setMenus] = useState([
-    {id:1, title: 'UI/UX 개발', desc:'사용자 인터페이스와 사용자가 웹사이트를 이용하면 느끼고 생각하는 총체적 경험을 개발', },
-    {id:2, title: '재사용이 가능한 UI 개발', desc:'앵귤러, 리엑트, 뷰등의 자바스크립트 프레임워크를 가지고 재사용할 수 있는 UI를 만든다.' },
-    {id:3, title: '애니메이션 구현', desc:'CSS 또는 javascript를 사용해 다양한 효과의 애니메이션 구현한다.' }
+    {id:1, title: 'UI/UX 개발', desc:'사용자 인터페이스와 사용자가 웹사이트를 이용하면 느끼고 생각하는 총체적 경험을 개발', dif:1 },
+    {id:2, title: '재사용이 가능한 UI 개발', desc:'앵귤러, 리엑트, 뷰등의 자바스크립트 프레임워크를 가지고 재사용할 수 있는 UI를 만든다.', dif:2 },
+    {id:3, title: '애니메이션 구현', desc:'CSS 또는 javascript를 사용해 다양한 효과의 애니메이션 구현한다.', dif:3 }
   ]);
 
   let _title = null;
   let _desc = null;
+  let _dif = null;
   let _article = null;
 
   const handleChangeMode = useCallback((id)=>{
@@ -64,18 +65,20 @@ function App() {
     const selected = menus.find(menu=>menu.id === id);
     _title = selected.title;
     _desc = selected.desc;
+    _dif = selected.dif;
     _article = <ReadArticle 
       title={_title} 
       desc={_desc}
+      dif={_dif}
       onChangeMode={handleControlMode}
     />
   }else if(mode === 'create'){
-    _article = <CreateArticle onsubmit={(_title, _desc)=>{
+    _article = <CreateArticle onsubmit={(_title, _desc, _dif)=>{
       
       // console.log(_title,_desc);
       const newId = maxId +1;
       // let _menus = menus.concat({id:newId, title: _title, desc: _desc});
-      let _menus = [...menus, {id:newId, title: _title, desc: _desc}];
+      let _menus = [...menus, {id:newId, title: _title, desc: _desc, dif:_dif}];
       setMenus(_menus);
       setMaxId(newId);
       setId(newId);
@@ -85,10 +88,11 @@ function App() {
     const selected = menus.find(menu=>menu.id === id);
     _title = selected.title;
     _desc = selected.desc;
+    _dif = selected.dif;
 
-    _article = <UpdateArticle title={_title} desc={_desc} onsubmit={(_title, _desc)=>{
-      console.log(_title, _desc);
-      setMenus(prev=> prev.map(m=> m.id === id ? {...m, title: _title, desc:_desc } : m))
+    _article = <UpdateArticle title={_title} desc={_desc} dif={_dif} onsubmit={(_title, _desc, _dif)=>{
+      // console.log(_title, _desc);
+      setMenus(prev=> prev.map(m=> m.id === id ? {...m, title: _title, desc:_desc, dif: _dif } : m))
       setMode('read');
       
     }} />

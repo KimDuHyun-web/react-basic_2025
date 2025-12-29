@@ -1,5 +1,5 @@
 function ReadArticle({mode, title, desc, dif, onChangeMode}){
-  console.log('ReadArticle render');
+  // console.log('ReadArticle render');
   return(
     <section>
       <article>

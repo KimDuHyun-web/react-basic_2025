@@ -2,7 +2,7 @@ import { memo } from "react";
 
 
 function MyNav({data, onChangeMode}){
-  console.log('MyNav render');
+  // console.log('MyNav render');
   /*
   const lists = [];
   console.log(data);
