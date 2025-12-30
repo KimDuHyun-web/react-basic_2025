@@ -5,7 +5,7 @@ function ReadArticle({mode, title, desc, dif, onChangeMode}){
       <article>
         <h2>{title}</h2>
         <p>{desc}</p>
-        <p>{dif}</p>
+        <p>난이도: {dif}</p>
         {
         mode !== 'welcome' && (
         <>

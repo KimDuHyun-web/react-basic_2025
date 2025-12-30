@@ -6,7 +6,7 @@ function CreateArticle({onsubmit}){
         <h2>Create Article</h2>
         <form action="/create_process" method="POST" onSubmit={(e)=>{
           e.preventDefault();
-          onsubmit(e.target.title.value,e.target.desc.value);
+          onsubmit(e.target.title.value,e.target.desc.value,e.target.dif.value);
         }}>
           <p>
             <label htmlFor="title">Title:</label>
